@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ObjectSpawn () {
-		GameObject objectsSpawner = Instantiate (objectsPrefab, new Vector3 (x,-2.9f,0), Quaternion.Euler(0,0,0));
+		GameObject objectsSpawner = Instantiate (objectsPrefab, new Vector3 (x,-3.4f,0), Quaternion.Euler(0,0,0));
 			objectsSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-80, 0));
 			Debug.Log("Hello i exist");
 		//if (x < -12) {
