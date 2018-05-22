@@ -33,10 +33,9 @@ public class NoteManager : MonoBehaviour {
 	}
 
 	public void NotesSpawn () {
-		noteSprite = notesPrefab;
-		GameObject notesSpawner = Instantiate (notesPrefab, new Vector3 (-50, 50, 0), Quaternion.Euler (0, 0, 0));
-		notesPrefab.GetComponent <Rigidbody2D> ().AddForce(new Vector2(instNoteX, instNoteY));
-		noteSprite.GetComponent<SpriteRenderer> ().sprite = GetRandomNotes ();
+		GameObject notesSpawner = Instantiate (notesPrefab, new Vector3 (0, 0, 0), Quaternion.Euler (0, 0, 0));
+		notesSpawner.GetComponent <Rigidbody2D> ().AddForce(new Vector2(instNoteX, instNoteY));
+		notesSpawner.GetComponent<SpriteRenderer> ().sprite = GetRandomNotes ();
 	}
 
 	public Sprite GetRandomNotes () {
@@ -46,11 +45,8 @@ public class NoteManager : MonoBehaviour {
 	void Update () {
 		timeLeft -= Time.deltaTime;
 		if (timeLeft < 1) {
-			timeLeft = 10;
-		}
-		if (timeLeft < 2) {
 			NotesSpawn ();
+			timeLeft = Random.Range (10f, 13f);
 		}
-		Debug.Log (": " + timeLeft);
 	}
 }
