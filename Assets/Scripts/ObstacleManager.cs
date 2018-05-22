@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+
+public class ObstacleManager : MonoBehaviour {
 
 	public GameObject objectsPrefab;
 	float timeLeft = 5.0f;

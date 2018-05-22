@@ -5,13 +5,16 @@ using System.Linq;
 //rascunho de codigos
 //instantiating musical notes
 //musical notes chosen: treble, crotchet, minim, semiquaver, beam, quaver
-
-public class LevelManager : MonoBehaviour {
+public class NoteManager : MonoBehaviour {
 	
 	private List<Sprite> notes;
-	float timeLeft = 4.0f;
+	public float timeLeft = 10.0f;
+	public GameObject notesPrefab, noteSprite;
+	public float instNoteX = 10;
+	public float instNoteY = 10;
 
 	void Start () {
+		notesPrefab = GameObject.Find ("MusicalNotes");
 		this.setUpTexturesResources();
 	}
 
@@ -29,6 +32,14 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void NotesSpawn () {
+		noteSprite = notesPrefab;
+		GameObject notesSpawner = Instantiate (notesPrefab, new Vector3 (-50, 50, 0), Quaternion.Euler (0, 0, 0));
+		notesPrefab.GetComponent <Rigidbody2D> ().AddForce(new Vector2(instNoteX, instNoteY));
+		noteSprite.GetComponent<SpriteRenderer> ().sprite = GetRandomNotes ();
+		Vector2 sprite_size = GetComponent<SpriteRenderer>().sprite.rect.size;
+	}
+
 	public Sprite GetRandomNotes () {
 		return notes [Random.Range (0, notes.Count)];
 	}
@@ -36,9 +47,11 @@ public class LevelManager : MonoBehaviour {
 	void Update () {
 		timeLeft -= Time.deltaTime;
 		if (timeLeft < 1) {
-			timeLeft = Random.Range(3f, 7f);
-			GetRandomNotes ();
-			Debug.Log ("working: " + timeLeft);
+			timeLeft = 10;
 		}
+		if (timeLeft < 2) {
+			NotesSpawn ();
+		}
+		Debug.Log (": " + timeLeft);
 	}
 }
