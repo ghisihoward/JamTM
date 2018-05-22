@@ -37,7 +37,6 @@ public class NoteManager : MonoBehaviour {
 		GameObject notesSpawner = Instantiate (notesPrefab, new Vector3 (-50, 50, 0), Quaternion.Euler (0, 0, 0));
 		notesPrefab.GetComponent <Rigidbody2D> ().AddForce(new Vector2(instNoteX, instNoteY));
 		noteSprite.GetComponent<SpriteRenderer> ().sprite = GetRandomNotes ();
-		Vector2 sprite_size = GetComponent<SpriteRenderer>().sprite.rect.size;
 	}
 
 	public Sprite GetRandomNotes () {

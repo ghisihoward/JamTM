@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212730003607376718}
   - component: {fileID: 61469443976471780}
   - component: {fileID: 50818338271690136}
-  - component: {fileID: 114845124584081926}
+  - component: {fileID: 114140304520269248}
   m_Layer: 0
   m_Name: MusicalNotes
   m_TagString: Untagged
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
---- !u!114 &114845124584081926
+--- !u!114 &114140304520269248
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,14 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552385970680072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b6b0e3ac1d2b849b475e715f029bd7, type: 3}
+  m_Script: {fileID: 11500000, guid: d9064653eec989248901a0a59c49e1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 10
-  notesPrefab: {fileID: 1552385970680072}
-  noteSprite: {fileID: 0}
-  instNoteX: 10
-  instNoteY: 10
 --- !u!212 &212730003607376718
 SpriteRenderer:
   m_ObjectHideFlags: 1
