@@ -7,14 +7,17 @@ using System.Linq;
 //musical notes chosen: treble, crotchet, minim, semiquaver, beam, quaver
 public class NoteManager : MonoBehaviour {
 	
-	private List<Sprite> notes;
-	public float timeLeft = 10.0f;
-	public GameObject notesPrefab, noteSprite;
 	public float instNoteX = 10;
 	public float instNoteY = 10;
+	private float timeLeft;
+	private GameObject notesPrefab, noteSprite;
+	private GameSettings gameSettings;
+	private List<Sprite> notes;
 
 	void Start () {
-		notesPrefab = GameObject.Find ("MusicalNotes");
+		gameSettings = GameObject.FindWithTag ("GameSettings").GetComponent <GameSettings> ();
+		notesPrefab = gameSettings.notesPrefab;
+		timeLeft = Random.Range (gameSettings.noteSpawnInterval.x, gameSettings.noteSpawnInterval.y);
 		this.setUpTexturesResources();
 	}
 
@@ -33,8 +36,13 @@ public class NoteManager : MonoBehaviour {
 	}
 
 	public void NotesSpawn () {
-		GameObject notesSpawner = Instantiate (notesPrefab, new Vector3 (0, 0, 0), Quaternion.Euler (0, 0, 0));
-		notesSpawner.GetComponent <Rigidbody2D> ().AddForce(new Vector2(instNoteX, instNoteY));
+		GameObject notesSpawner = Instantiate (
+			notesPrefab, 
+			new Vector3 (0, 0, 0), 
+			Quaternion.Euler (0, 0, 0),
+			gameSettings.notesSpawnParent
+		);
+		notesSpawner.GetComponent <Rigidbody2D> ().AddForce(new Vector2(gameSettings.notePushforce.x, gameSettings.notePushforce.y));
 		notesSpawner.GetComponent<SpriteRenderer> ().sprite = GetRandomNotes ();
 	}
 
@@ -46,7 +54,7 @@ public class NoteManager : MonoBehaviour {
 		timeLeft -= Time.deltaTime;
 		if (timeLeft < 1) {
 			NotesSpawn ();
-			timeLeft = Random.Range (10f, 13f);
+			timeLeft = Random.Range (gameSettings.noteSpawnInterval.x, gameSettings.noteSpawnInterval.y);
 		}
 	}
 }

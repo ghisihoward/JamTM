@@ -4,28 +4,33 @@ using UnityEngine;
 
 
 public class ObstacleManager : MonoBehaviour {
-
+	
+	public float x = 10.30f;
 	public GameObject objectsPrefab;
-	float timeLeft = 5.0f;
-	float x = 10.30f;
+	private GameSettings gameSettings;
+	private float timeLeft;
 	
 	void Start () {
 		objectsPrefab = GameObject.Find ("FloatingObjects");
+		gameSettings = GameObject.FindWithTag ("GameSettings").GetComponent <GameSettings> ();
 	//	Blitzkrieg.GetGameObjectPosition ();
 	}
 
 	void ObjectSpawn () {
-		GameObject objectsSpawner = Instantiate (objectsPrefab, new Vector3 (x,-3.4f,0), Quaternion.Euler(0,0,0));
-			objectsSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-80, 0));
-			Debug.Log("Hello i exist");
-		//if (x < -12) {
-		//	GameObject.Destroy (objectsPrefab);
-		}
+		GameObject objectsSpawner = Instantiate (
+			objectsPrefab, 
+			new Vector3 (x,-3.4f,0), 
+			Quaternion.Euler(0,0,0),
+			gameSettings.objectSpawnParent
+		);
+		objectsSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-gameSettings.objectPushForce, 0));
+		Debug.Log("Hello i exist");
+	}
 
 	void Update () {
 		timeLeft -= Time.deltaTime;
 		if (timeLeft < 0) {
-			timeLeft = 5.0f;
+			timeLeft = gameSettings.spawnInterval;
 			ObjectSpawn ();
 		}
 	}
