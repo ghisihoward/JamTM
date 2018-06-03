@@ -11,22 +11,22 @@ public class ScoreManager : MonoBehaviour {
 	//	- Jogador tem que reagir e não 	   :: Não soma 1 nas vezes que ele reagiu positivamente > Acertou    = 1
 	//	- Acertou / Apareceram > 0~100% de 2 estrelas. 0 - 0 est, 25, 1/2 estrela... etc.
 
-	int totalNotes = 0;
-	int totalPlayerRights = 0;
+	//int totalNotes = 0;
+	//int totalPlayerRights = 0;
 
-	NoteManager noteManager;
-	Log 
+	//NoteManager noteManager;
+	//Log 
 
-	void Start () {
-		if (noteManager.NotesSpawn) {
-			totalNotes += 1;
-		}
-		if (){
+	//void Start () {
+	//	if (noteManager.NotesSpawn) {
+	//		totalNotes += 1;
+	//	}
+	//	if (){
 			
-		}
-	}
+	//	}
+	//}
 	
-	void Update () {
+//	void Update () {
 		
-	}
+//	}
 }
