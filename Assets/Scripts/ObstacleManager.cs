@@ -9,36 +9,45 @@ public class ObstacleManager : MonoBehaviour {
 	public GameObject objectsPrefab;
 	private GameSettings gameSettings;
 	private float timeLeft;
+	private GameObject sharkPrefab, islandPrefab;
 	
 	void Start () {
-		objectsPrefab = GameObject.Find ("FloatingObjects");
+		sharkPrefab = GameObject.Find ("Shark");
+		islandPrefab = GameObject.Find ("Island");
 		gameSettings = GameObject.FindWithTag ("GameSettings").GetComponent <GameSettings> ();
-	//	Blitzkrieg.GetGameObjectPosition ();
-	}
-
-	void ObjectSpawn () {
-		GameObject objectsSpawner = Instantiate (
-			objectsPrefab, 
-			new Vector3 (x,-3.4f,0), 
-			Quaternion.Euler(0,0,0),
-			gameSettings.objectSpawnParent
-		);
-		objectsSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-gameSettings.objectPushForce, 0));
-		Debug.Log("Hello i exist");
 	}
 
 	void Update () {
-		timeLeft -= Time.deltaTime;
-		if (timeLeft < 0) {
+		timeLeft += Time.deltaTime;
+		if (timeLeft == 10f) {
+			IslandSpawn ();
+		} else if (timeLeft == 5f) {
+			SharkSpawn ();
+		}
+		else if (timeLeft == 20f) {
 			timeLeft = gameSettings.spawnInterval;
-			ObjectSpawn ();
 		}
 	}
-}
-// > Bagulinho aparece na tela de jogo :: Soma 1 nas coisas que apareceram 					> Apareceram = 1
-// > Jogador tem que reagir e reage    :: Soma 1 nas vezes que ele reagiu positivamente 	> Acertou 	 = 1
-// > Bagulinho aparece na tela de jogo :: Soma 1 nas coisas que apareceram 					> Apareceram = 2
-// > Jogador tem que reagir e não 	   :: Não soma 1 nas vezes que ele reagiu positivamente > Acertou    = 1
 
-// Acertou / Apareceram > 0~100% de 2 estrelas. 0 - 0 est, 25, 1/2 estrela... etc.
-	
+	void IslandSpawn () {
+		GameObject islandSpawner = Instantiate (
+			islandPrefab, 
+			new Vector3 (x,-3.1f,0), 
+			Quaternion.Euler(0,0,0),
+			gameSettings.objectSpawnParent
+		);
+		islandSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-gameSettings.objectPushForce, 0));
+		Debug.Log("Hello island");
+	}
+
+	void SharkSpawn () {
+		GameObject sharkSpawner = Instantiate (
+			sharkPrefab, 
+			new Vector3 (x,-3.1f,0), 
+			Quaternion.Euler(0,0,0),
+			gameSettings.objectSpawnParent
+		);
+		sharkSpawner.GetComponent <Rigidbody2D> ().AddForce (new Vector2 (-gameSettings.objectPushForce, 0));
+		Debug.Log("Hello shark");
+	}
+}

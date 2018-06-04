@@ -51,11 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fc37bac1ded64458f21badaab9b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 5
+  spawnInterval: 1
   objectPushForce: 80
   notePushforce: {x: 10, y: 10}
   noteSpawnInterval: {x: 5, y: 15}
   notesPrefab: {fileID: 1351922975894702, guid: 52685e961f01dd540a41a1ee6af700a8,
     type: 2}
+  shark: {fileID: 0}
+  island: {fileID: 0}
   objectSpawnParent: {fileID: 0}
   notesSpawnParent: {fileID: 0}
