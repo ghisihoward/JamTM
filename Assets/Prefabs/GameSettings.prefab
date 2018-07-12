@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fc37bac1ded64458f21badaab9b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 1
+  spawnIntervalIsland: 2
+  spawnIntervalShark: 3
   objectPushForce: 80
   notePushforce: {x: 10, y: 10}
   noteSpawnInterval: {x: 5, y: 15}

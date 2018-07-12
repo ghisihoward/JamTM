@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameSettings : MonoBehaviour {
 
 	[Range (1f, 20f)]
-	public float spawnInterval = 5f;
+	public float spawnIntervalIsland = 5f;
+	[Range (1f, 20f)]
+	public float spawnIntervalShark = 1f;
+
 
 	[Range (10, 160)]
 	public float objectPushForce = 80f;
