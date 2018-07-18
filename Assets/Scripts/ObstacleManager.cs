@@ -9,7 +9,7 @@ public class ObstacleManager : MonoBehaviour {
 	public GameObject objectsPrefab;
 	private GameSettings gameSettings;
 	private float timeLeft;
-	private GameObject sharkPrefab, islandPrefab;
+	private GameObject sharkPrefab, islandPrefab, shootingStar1prefab, shootingStar2prefab, shootingStar3prefab;
 	
 	void Start () {
 		sharkPrefab = GameObject.Find ("Shark");
@@ -78,7 +78,21 @@ public class ObstacleManager : MonoBehaviour {
 	}
 
     void ShootingStar() {
+        int sortingNumber = 2 * Random.Range(1,3);
+        //2*1 = 2, 2*2 = 4, 2*3 = 6;
+        //
 
+        if (sortingNumber == 2) {
+            GameObject shootingStar1 = Instantiate(shootingStar1prefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        }
+
+        else if () {
+            GameObject shootingStar2 = Instantiate(shootingStar2prefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        }
+
+        else if () {
+            GameObject shootingStar3 = Instantiate(shootingStar3prefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        }
     }
 
     void CloudSpawn() {
@@ -90,8 +104,8 @@ public class ObstacleManager : MonoBehaviour {
     }
 
     void Whale() {
-        //void OnCollisionEnter2D(Collision2D coll) {
+        void OnCollisionEnter2D(Collision2D coll) {
 
-        //}
+        }
     }
 }
