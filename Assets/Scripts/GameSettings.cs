@@ -16,5 +16,6 @@ public class GameSettings : MonoBehaviour {
 	public Vector2 notePushforce = new Vector2 (10, 10);
 	public Vector2 noteSpawnInterval = new Vector2 (5f, 20f);
 	public GameObject notesPrefab, shark, island;
-	public Transform objectSpawnParent, notesSpawnParent;
+    public Transform objectSpawnParent, notesSpawnParent;
+    public Sprite deadLifeIcon, lifeIcon;
 }
